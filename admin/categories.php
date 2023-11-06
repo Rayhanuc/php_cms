@@ -36,6 +36,7 @@
 
 
                         <?php
+                            // ** UPDATE AND INCLUDE QUERY
                             if (isset($_GET['edit'])) {
                                 $cat_id = $_GET['edit'];
                                 include "includes/update_categories.php" ;
@@ -55,38 +56,13 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php
-                                    // ** FIND ALL CATEGORIES QUERY START
-                                    $query = "SELECT * FROM categories";
-                                    $select_categories = mysqli_query($connection, $query);
-                                    while($row = mysqli_fetch_assoc($select_categories)) {
-                                        $cat_id = $row['cat_id'];
-                                        $cat_title = $row['cat_title'];
-                                        if (!empty($select_categories)) {
-                                            echo "<tr>";
-                                            echo "<td>{$cat_id}</td>";
-                                            echo "<td>{$cat_title}</td>";
-                                            echo "<td><a class='text-danger' href='categories.php?delete={$cat_id}'>Delete</a></td>";
-                                            echo "<td><a class='text-info' href='categories.php?edit={$cat_id}'>edit</a></td>";
-                                            echo "</tr>";
-                                        }
 
-                                    }
-                                    // ** FIND ALL CATEGORIES QUERY END
-
-                                    // ** CATEGORIES DELETE QUERY START
-                                    if (isset($_GET['delete'])) {
-                                        $get_the_id = $_GET['delete'];
-                                        $query = "DELETE FROM categories WHERE cat_id = {$get_the_id}";
-                                        $delete_query = mysqli_query($connection, $query);
-                                        header("Location: categories.php");
-                                    }
-                                    // ** CATEGORIES DELETE QUERY END
-                                ?>
+                                <!-- FIND ALL CATEGORIES QUERY START-->
+                                <?php findAllCategories(); ?>
+                                <?php deleteCategories(); ?>
                             </tbody>
                         </table>
                     </div>
-
 
                 </div>
             </div>
