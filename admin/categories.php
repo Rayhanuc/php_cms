@@ -1,5 +1,6 @@
 <?php include "includes/admin_header.php" ; ?>
 
+
 <div id="wrapper">
 
     <!-- Navigation markup start -->
@@ -20,26 +21,9 @@
 
                     <!-- Add Category form start-->
                     <div class="col-xs-6">
-                        <?php
-                            // ** CATEGORY INPUT QUERY START
-                            if (isset($_POST['submit'])) {
-                                $cat_title = $_POST['cat_title'];
+                        <!-- CATEGORY INPUT-->
+                        <?php insert_categories(); ?>
 
-                                if ($cat_title == "" | empty($cat_title)) {
-                                    echo "<p class='alert-danger'>This field should not be empty.</p>";
-                                } else {
-                                    $query = "INSERT INTO categories(cat_title) ";
-                                    $query .= "VALUE('{$cat_title}')";
-
-                                    $create_category_query = mysqli_query($connection, $query);
-
-                                    if (!$create_category_query) {
-                                        die('QUERY FAILED' . mysqli_error($connection));
-                                    }
-                                }
-                            }
-                            // ** CATEGORY INPUT QUERY END
-                        ?>
                         <form action="" method="post">
                             <div class="form-group">
                                 <label for="cat-title">Add Category</label>
