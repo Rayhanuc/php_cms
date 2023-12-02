@@ -1,5 +1,13 @@
 <?php
 
+// *** Function confirm
+function confirmQuery($result) {
+    global $connection;
+    if (!$result) {
+        die("<p class='bg-info'>QUERY FAILED<p>". mysqli_error($connection));
+    }
+}
+
 function insert_categories() {
     global $connection;
     // ** CATEGORY INPUT QUERY START
