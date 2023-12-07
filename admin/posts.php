@@ -21,8 +21,8 @@
 
                     <!-- Posts table start -->
                     <?php
-                        if (isset($_GET['sourse'])) {
-                            $source = $_GET['sourse'];
+                        if (isset($_GET['source'])) {
+                            $source = $_GET['source'];
                         } else {
                             $source = '';
                         }
