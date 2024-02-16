@@ -71,7 +71,7 @@ if (isset($_POST['update_post'])) {
         <input value="<?php echo $post_category_id; ?>" type="text" class="form-control" name="post_category_id">
 
 
-        <select name="post_category" id="">
+        <select name="post_category_id" id="">
             <?php
             $query = "SELECT * FROM categories";
             $select_categories= mysqli_query($connection, $query);
